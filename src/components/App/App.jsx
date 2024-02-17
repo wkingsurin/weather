@@ -42,7 +42,7 @@ export default function App() {
             <Logo classes={appStyles} />
             <InputBlock classes={appStyles} />
             <DynamicWeather classes={appStyles} />
-            <ThreeDays classes={appStyles} data={data} />
+            {/* <ThreeDays classes={appStyles} data={data} /> */}
           </div>
         </div>
       </div>

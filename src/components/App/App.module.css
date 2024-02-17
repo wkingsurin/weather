@@ -14,7 +14,8 @@
   --rr: 0 7px 7px 0;
   --mb60: 60px;
   --pi: 0 12px;
-  --shdw: 0 0 15px 7px rgba(0, 0, 0, 0.04);
+  --shdw: 0 0 15px 7px rgba(0, 0, 0, 0.1);
+  --tr3: 0.3s ease-in-out;
 }
 
 .container {
@@ -114,6 +115,11 @@
 
   display: flex;
   flex-direction: column;
+
+  transition: var(--tr3);
+  border-radius: var(--r);
+}
+.select:hover {
   box-shadow: var(--shdw);
 }
 .select button {
@@ -266,6 +272,7 @@ button path {
 }
 .weather {
   display: flex;
+  align-items: center;
 }
 .weather > *:not(:last-child) {
   margin-right: 40px;
