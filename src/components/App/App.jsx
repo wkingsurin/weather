@@ -69,6 +69,17 @@ export default function App() {
     setTimeout(() => {
       setIsLoading(false);
     }, DELAY);
+
+    document.addEventListener("click", (e) => {
+      if (isLoading) return;
+      if (!e.target.closest("#dropdown")) {
+        setSelect((prev) => ({
+          ...prev,
+          isOpened: false,
+        }));
+        return;
+      }
+    });
   }, []);
 
   return (

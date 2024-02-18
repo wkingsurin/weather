@@ -17,7 +17,7 @@ const DropDown = (props) => {
   }
 
   return (
-    <div className={classes.select}>
+    <div className={classes.select} id="dropdown">
       <button
         onClick={handleSelect}
         style={{
