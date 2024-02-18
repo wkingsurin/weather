@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 32px;
+}
+.logo p {
+  margin: 0;
+  color: var(--gr);
+}

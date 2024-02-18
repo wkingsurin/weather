@@ -1,9 +1,11 @@
+import classes from "./Onday.module.css";
+
 import Date from "../Date";
 import Temperature from "../Temperature";
 import Precepitation from "../Precepitation";
 
 const Onday = (props) => {
-  const { classes, data } = props;
+  const { data } = props;
 
   return (
     <div className={classes.onday}>

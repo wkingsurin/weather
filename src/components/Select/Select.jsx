@@ -1,8 +1,7 @@
-import Chevron from "../Chevron";
+import classes from "./Select.module.css";
+import Chevron from "../../Chevron";
 
 const Select = (props) => {
-  const { classes } = props;
-
   return (
     <div className={classes.select}>
       <button>

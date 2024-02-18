@@ -6,8 +6,8 @@ const InputBlock = (props) => {
 
   return (
     <div className={classes["content-row"]}>
-      <Input classes={classes} />
-      <Select classes={classes} />
+      <Input />
+      <Select />
     </div>
   );
 };

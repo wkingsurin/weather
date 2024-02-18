@@ -1,0 +1,7 @@
+.three-days {
+  display: flex;
+  flex-direction: column;
+}
+.three-days > *:not(:last-child) {
+  margin-bottom: 12px;
+}

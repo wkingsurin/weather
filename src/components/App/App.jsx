@@ -41,8 +41,8 @@ export default function App() {
           <div className={appStyles.inner}>
             <Logo classes={appStyles} />
             <InputBlock classes={appStyles} />
-            <DynamicWeather classes={appStyles} />
-            {/* <ThreeDays classes={appStyles} data={data} /> */}
+            {/* <DynamicWeather classes={appStyles} /> */}
+            <ThreeDays classes={appStyles} data={data} />
           </div>
         </div>
       </div>

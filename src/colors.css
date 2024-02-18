@@ -1,0 +1,19 @@
+:root {
+  --gr: #a9f0d1;
+  --b1: #292929;
+  --b2: #212121;
+  --b3: #202020;
+  --text-b: #1e1e1e;
+  --text-b5: rgba(30, 30, 30, 0.5);
+  --text-w: white;
+  --bg: #141615;
+  --r: 7px;
+  --rt: 7px 7px 0 0;
+  --rb: 0 0 7px 7px;
+  --rl: 7px 0 0 7px;
+  --rr: 0 7px 7px 0;
+  --mb60: 60px;
+  --pi: 0 12px;
+  --shdw: 0 0 15px 7px rgba(0, 0, 0, 0.1);
+  --tr3: 0.3s ease-in-out;
+}

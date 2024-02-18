@@ -1,0 +1,73 @@
+.select {
+  position: relative;
+  flex: 0 0 135px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: var(--tr3);
+  border-radius: var(--r);
+}
+.select:hover {
+  box-shadow: var(--shdw);
+}
+.select button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  outline: none;
+  padding: 0;
+
+  height: 40px;
+  cursor: pointer;
+
+  background: var(--b1);
+  border-radius: var(--r);
+  /* border-radius: var(--rt); */
+}
+button svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 10px;
+  height: 10px;
+
+  margin-top: 4px;
+  margin-left: 5px;
+}
+button g {
+  fill: var(--text-w);
+}
+button path {
+}
+.list {
+  position: absolute;
+  top: 40px;
+
+  /* display: flex; */
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 15px 20px;
+
+  list-style: none;
+  box-sizing: border-box;
+  background: var(--b3);
+  border-radius: var(--rb);
+}
+.list li {
+  cursor: pointer;
+}
+.select select {
+  display: none;
+}
+.option {
+}
