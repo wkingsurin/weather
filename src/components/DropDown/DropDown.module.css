@@ -65,6 +65,10 @@ button path {
 }
 .list li {
   cursor: pointer;
+  transition: var(--tr3);
+}
+.list li:hover {
+  color: var(--gr);
 }
 .select select {
   display: none;

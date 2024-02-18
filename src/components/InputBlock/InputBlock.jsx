@@ -1,13 +1,14 @@
 import Input from "../Input";
-import Select from "../Select";
+import DropDown from "../DropDown";
 
 const InputBlock = (props) => {
+  const { selectState } = props;
   const { classes } = props;
 
   return (
     <div className={classes["content-row"]}>
       <Input />
-      <Select />
+      <DropDown selectState={selectState} />
     </div>
   );
 };
