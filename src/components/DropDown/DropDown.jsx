@@ -1,10 +1,13 @@
 import classes from "./DropDown.module.css";
 import Chevron from "../../Chevron";
+import { getData, URL, options } from "../../utils";
 
 const DropDown = (props) => {
-  const { selectState, loadingState } = props;
+  const { selectState, loadingState, dataState, cityState } = props;
   const [select, setSelect] = selectState;
   const [isLoading, setIsLoading] = loadingState;
+  const [data, setData] = dataState;
+  const [city, setCity] = cityState;
 
   function handleSelect() {
     setSelect((prev) => ({ ...prev, isOpened: !prev.isOpened }));
@@ -13,7 +16,10 @@ const DropDown = (props) => {
   function handleClickData(e) {
     setSelect((prev) => ({ ...prev, isOpened: false, value: e.target.id }));
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1500);
+    getData(URL(city), options).then((json) => {
+      setData(json);
+      setIsLoading(false);
+    });
   }
 
   return (

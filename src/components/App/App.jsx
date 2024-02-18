@@ -7,68 +7,22 @@ import ThreeDays from "../ThreeDays";
 
 import Spinner from "../Spinner/Spinner";
 
-import { initialDropDown } from "../../utils";
+import { initialDropDown, getData, URL, options } from "../../utils";
 import { useEffect, useState } from "react";
-
-// test data
-// today
-const today = [
-  {
-    id: 0,
-    day: "Вс",
-    month: "18.02",
-    temp: -9,
-    tempLike: -14,
-    image: { src: "./snow.png", name: "snow" },
-  },
-];
-const tomorrow = [
-  {
-    id: 0,
-    day: "Пн",
-    month: "19.02",
-    temp: -8,
-    tempLike: -12,
-    image: { src: "./sun.png", name: "sun" },
-  },
-];
-const threeDays = [
-  {
-    id: 0,
-    day: "Вс",
-    month: "18.02",
-    temp: -9,
-    tempLike: -14,
-    image: { src: "./snow.png", name: "snow" },
-  },
-  {
-    id: 1,
-    day: "Пн",
-    month: "19.02",
-    temp: -8,
-    tempLike: -12,
-    image: { src: "./sun.png", name: "sun" },
-  },
-  {
-    id: 2,
-    day: "Вт",
-    month: "20.02",
-    temp: -15,
-    tempLike: -16,
-    image: { src: "./snow.png", name: "snow" },
-  },
-];
-const DELAY = 1000;
 
 export default function App() {
   const [select, setSelect] = useState(initialDropDown);
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [city, setCity] = useState("Богданович");
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
+    getData(URL(city), options).then(async (json) => {
+      const result = await json;
+      setData(result);
       setIsLoading(false);
-    }, DELAY);
+    });
 
     document.addEventListener("click", (e) => {
       if (isLoading) return;
@@ -92,30 +46,35 @@ export default function App() {
               classes={appStyles}
               selectState={[select, setSelect]}
               loadingState={[isLoading, setIsLoading]}
+              dataState={[data, setData]}
+              cityState={[city, setCity]}
             />
             {isLoading && (
               <div className={appStyles.spinnerBlock}>
                 <Spinner />
               </div>
             )}
-            {!isLoading && (
+            {isLoading === false && (
               <>
                 {select.value === "today" && (
                   <DynamicWeather
                     classes={appStyles}
-                    data={today[0]}
+                    data={data?.current || {}}
                     day={select.value}
                   />
                 )}
                 {select.value === "tomorrow" && (
                   <DynamicWeather
                     classes={appStyles}
-                    data={tomorrow[0]}
+                    data={data.forecast.forecastday[1]}
                     day={select.value}
                   />
                 )}
                 {select.value === "three-days" && (
-                  <ThreeDays classes={appStyles} data={threeDays} />
+                  <ThreeDays
+                    classes={appStyles}
+                    data={data.forecast.forecastday}
+                  />
                 )}
               </>
             )}

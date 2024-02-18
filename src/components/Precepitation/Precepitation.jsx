@@ -3,7 +3,7 @@ const Precepitation = (props) => {
 
   return (
     <div className={classes.precipitation}>
-      <img src={image.src} alt={image.name} />
+      <img src={image.icon} alt={image.text} />
     </div>
   );
 };

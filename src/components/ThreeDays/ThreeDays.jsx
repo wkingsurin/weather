@@ -7,8 +7,8 @@ const ThreeDays = (props) => {
 
   return (
     <div className={classes["three-days"]}>
-      {data.map((date) => (
-        <Onday key={date.id} data={date} />
+      {data.map((res) => (
+        <Onday key={res.date} data={res} />
       ))}
     </div>
   );
