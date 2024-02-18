@@ -85,3 +85,11 @@
   object-fit: cover;
   overflow-clip-margin: unset;
 }
+
+.spinnerBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 89px;
+}

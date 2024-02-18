@@ -2,8 +2,9 @@ import classes from "./DropDown.module.css";
 import Chevron from "../../Chevron";
 
 const DropDown = (props) => {
-  const { selectState } = props;
+  const { selectState, loadingState } = props;
   const [select, setSelect] = selectState;
+  const [isLoading, setIsLoading] = loadingState;
 
   function handleSelect() {
     setSelect((prev) => ({ ...prev, isOpened: !prev.isOpened }));
@@ -11,6 +12,8 @@ const DropDown = (props) => {
 
   function handleClickData(e) {
     setSelect((prev) => ({ ...prev, isOpened: false, value: e.target.id }));
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 1500);
   }
 
   return (

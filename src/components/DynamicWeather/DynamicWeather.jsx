@@ -1,11 +1,13 @@
 const DynamicWeather = (props) => {
-  const { classes, data } = props;
+  const { classes, data, day } = props;
 
   return (
     <div className={classes.dynamic}>
       <div className={classes.row}>
         <div className={classes.info}>
-          <span className={classes.text}>Сейчас</span>
+          <span className={classes.text}>
+            {day === "today" ? "Сейчас" : "Завтра"}
+          </span>
           <div className={classes.temperature}>
             <span className={classes.value}>{data.temp}</span>
             <span className={classes["measure_12"]}>o</span>

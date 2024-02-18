@@ -5,8 +5,10 @@ import InputBlock from "../InputBlock";
 import DynamicWeather from "../DynamicWeather";
 import ThreeDays from "../ThreeDays";
 
+import Spinner from "../Spinner/Spinner";
+
 import { initialDropDown } from "../../utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // test data
 // today
@@ -56,9 +58,18 @@ const threeDays = [
     image: { src: "./snow.png", name: "snow" },
   },
 ];
+const DELAY = 1000;
 
 export default function App() {
   const [select, setSelect] = useState(initialDropDown);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, DELAY);
+  }, []);
 
   return (
     <div className={appStyles.app}>
@@ -66,15 +77,36 @@ export default function App() {
         <div className={appStyles.content}>
           <div className={appStyles.inner}>
             <Logo classes={appStyles} />
-            <InputBlock classes={appStyles} selectState={[select, setSelect]} />
-            {select.value === "today" && (
-              <DynamicWeather classes={appStyles} data={today[0]} />
+            <InputBlock
+              classes={appStyles}
+              selectState={[select, setSelect]}
+              loadingState={[isLoading, setIsLoading]}
+            />
+            {isLoading && (
+              <div className={appStyles.spinnerBlock}>
+                <Spinner />
+              </div>
             )}
-            {select.value === "tomorrow" && (
-              <DynamicWeather classes={appStyles} data={tomorrow[0]} />
-            )}
-            {select.value === "three-days" && (
-              <ThreeDays classes={appStyles} data={threeDays} />
+            {!isLoading && (
+              <>
+                {select.value === "today" && (
+                  <DynamicWeather
+                    classes={appStyles}
+                    data={today[0]}
+                    day={select.value}
+                  />
+                )}
+                {select.value === "tomorrow" && (
+                  <DynamicWeather
+                    classes={appStyles}
+                    data={tomorrow[0]}
+                    day={select.value}
+                  />
+                )}
+                {select.value === "three-days" && (
+                  <ThreeDays classes={appStyles} data={threeDays} />
+                )}
+              </>
             )}
           </div>
         </div>
