@@ -14,7 +14,7 @@ export default function App() {
   const [select, setSelect] = useState(initialDropDown);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [city, setCity] = useState("Богданович");
+  const [city, setCity] = useState("Екатеринбург");
 
   useEffect(() => {
     setIsLoading(true);

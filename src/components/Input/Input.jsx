@@ -1,6 +1,7 @@
 import { getData, URL, options } from "../../utils";
 import classes from "./Input.module.css";
 import { useState } from "react";
+import { Send } from "../../SVG";
 
 const Input = (props) => {
   const { cityState, dataState, loadingState } = props;
@@ -43,7 +44,9 @@ const Input = (props) => {
         value={input}
         onChange={(e) => handleTyping(e)}
       />
-      <button onClick={() => handleClick()}>Ok</button>
+      <button className={classes.send} onClick={() => handleClick()}>
+        <Send />
+      </button>
     </div>
   );
 };

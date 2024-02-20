@@ -1,5 +1,5 @@
 import classes from "./DropDown.module.css";
-import Chevron from "../../Chevron";
+import { Chevron } from "../../SVG";
 import { getData, URL, options } from "../../utils";
 
 const DropDown = (props) => {
