@@ -8,6 +8,14 @@ const DynamicWeather = (props) => {
     return false;
   }
 
+  const images = {
+    clear: "./moon.png",
+    overcast: "./clouds.png",
+    partlyCloudy: "./partly-cloudy.png",
+    sunny: "./sun.png",
+    mist: "./mist.png",
+  };
+
   return (
     <div className={classes.dynamic}>
       <div className={classes.row}>

@@ -22,6 +22,7 @@ export default function App() {
       const result = await json;
       setData(result);
       setIsLoading(false);
+      console.log(result);
     });
 
     document.addEventListener("click", (e) => {
