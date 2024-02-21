@@ -3,9 +3,16 @@ import { getRoundTemp } from "../../utils";
 const DynamicWeather = (props) => {
   const { classes, data, day } = props;
 
+  const dayData = getDataOfTime(isToday, 14, data);
+
   function isToday() {
     if (day === "today") return true;
     return false;
+  }
+
+  function getDataOfTime(isToday, time, data) {
+    let day = isToday() ? data : data.hour[time];
+    return day;
   }
 
   const images = {
@@ -25,9 +32,7 @@ const DynamicWeather = (props) => {
           </span>
           <div className={classes.temperature}>
             <span className={classes.value}>
-              {isToday()
-                ? getRoundTemp(data.temp_c)
-                : getRoundTemp(data.day.avgtemp_c)}
+              {getRoundTemp(dayData.temp_c)}
             </span>
             <span className={classes["measure_12"]}>o</span>
           </div>
@@ -37,26 +42,17 @@ const DynamicWeather = (props) => {
         <div className={classes.info}>
           <span className={classes.text}>Солнечно</span>
           <div className={classes.precipitation}>
-            {isToday() && (
-              <img src={data?.condition?.icon} alt={data?.condition?.text} />
-            )}
-            {isToday() === false && (
-              <img
-                src={data?.day?.condition?.icon}
-                alt={data?.day?.condition?.text}
-              />
-            )}
+            <img
+              src={dayData?.condition?.icon}
+              alt={dayData?.condition?.text}
+            />
           </div>
         </div>
         <div className={classes.info}>
-          <span className={classes.text}>
-            {isToday() ? "Ощущается как" : "Ночью"}
-          </span>
+          <span className={classes.text}>Ощущается как</span>
           <div className={classes.temperature}>
             <span className={classes.value}>
-              {isToday()
-                ? getRoundTemp(data.feelslike_c)
-                : getRoundTemp(data.day.mintemp_c)}
+              {getRoundTemp(dayData.feelslike_c)}
             </span>
             <span className={classes["measure_12"]}>o</span>
           </div>
