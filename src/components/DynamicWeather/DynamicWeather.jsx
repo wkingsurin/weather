@@ -1,4 +1,4 @@
-import { getRoundTemp } from "../../utils";
+import { getRoundTemp, weatherType } from "../../utils";
 
 const DynamicWeather = (props) => {
   const { classes, data, day } = props;
@@ -14,14 +14,6 @@ const DynamicWeather = (props) => {
     let day = isToday() ? data : data.hour[time];
     return day;
   }
-
-  const images = {
-    clear: "./moon.png",
-    overcast: "./clouds.png",
-    partlyCloudy: "./partly-cloudy.png",
-    sunny: "./sun.png",
-    mist: "./mist.png",
-  };
 
   return (
     <div className={classes.dynamic}>
@@ -40,11 +32,13 @@ const DynamicWeather = (props) => {
       </div>
       <div className={classes.row}>
         <div className={classes.info}>
-          <span className={classes.text}>Солнечно</span>
+          <span className={classes.text}>
+            {weatherType[dayData?.condition?.text.trim()]?.text}
+          </span>
           <div className={classes.precipitation}>
             <img
-              src={dayData?.condition?.icon}
-              alt={dayData?.condition?.text}
+              src={weatherType[dayData?.condition?.text.trim()]?.icon}
+              alt={weatherType[dayData?.condition?.text.trim()]?.text}
             />
           </div>
         </div>

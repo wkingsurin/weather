@@ -1,9 +1,9 @@
 const Precepitation = (props) => {
-  const { classes, image } = props;
+  const { classes, icon, alt } = props;
 
   return (
     <div className={classes.precipitation}>
-      <img src={image.icon} alt={image.text} />
+      <img src={icon} alt={alt} />
     </div>
   );
 };

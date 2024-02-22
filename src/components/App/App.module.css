@@ -71,21 +71,21 @@
   font-size: 12px;
   line-height: 15px;
 }
-/* .precipitation {
+.precipitation {
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 30px;
   height: 30px;
-} */
-/* .precipitation img {
+}
+.precipitation img {
   width: 100px;
   height: 100%;
   object-fit: cover;
   overflow-clip-margin: unset;
-} */
-.precipitation {
+}
+/* .precipitation {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,7 +99,7 @@
   height: 50px;
   object-fit: cover;
   overflow-clip-margin: unset;
-}
+} */
 
 .spinnerBlock {
   display: flex;

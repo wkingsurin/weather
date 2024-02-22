@@ -25,7 +25,7 @@ export default function App() {
     });
 
     document.addEventListener("click", (e) => {
-      if (isLoading || !select.isOpened) return;
+      if (isLoading) return;
       if (!e.target.closest("#dropdown")) {
         setSelect((prev) => ({
           ...prev,

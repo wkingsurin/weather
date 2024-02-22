@@ -43,3 +43,34 @@ export const getWeekday = (date) => {
   const result = weekday[0].toUpperCase() + weekday[1];
   return result;
 };
+
+export const weatherType = {
+  Overcast: {
+    icon: "./clouds.png",
+    text: "Пасмурно",
+  },
+  Sunny: {
+    icon: "./sun.png",
+    text: "Солнечно",
+  },
+  Cloudy: {
+    icon: "./clouds.png",
+    text: "Облачно",
+  },
+  Clear: {
+    icon: "./sun.png",
+    text: "Солнечно",
+  },
+  Mist: {
+    icon: "./mist.png",
+    text: "Туман",
+  },
+  "Partly Cloudy": {
+    icon: "./partly-cloudy.png",
+    text: "Переменная облачность",
+  },
+  "Freezing fog": {
+    icon: "./mist.png",
+    text: "Туман",
+  },
+};

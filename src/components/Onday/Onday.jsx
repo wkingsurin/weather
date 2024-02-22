@@ -4,7 +4,12 @@ import DateComp from "../DateComp";
 import Temperature from "../Temperature";
 import Precepitation from "../Precepitation";
 
-import { getRoundTemp, correctDate, getWeekday } from "../../utils";
+import {
+  getRoundTemp,
+  correctDate,
+  getWeekday,
+  weatherType,
+} from "../../utils";
 
 const Onday = (props) => {
   const { data } = props;
@@ -22,7 +27,11 @@ const Onday = (props) => {
       <DateComp classes={classes} day={weekday} month={date} />
       <div className={classes.weather}>
         <Temperature classes={classes} temp={getRoundTemp(onDay.temp_c)} />
-        <Precepitation classes={classes} image={onDay.condition} />
+        <Precepitation
+          classes={classes}
+          icon={weatherType[onDay.condition.text.trim()].icon}
+          alt={weatherType[onDay.condition.text.trim()].text}
+        />
       </div>
       <div className={classes.info}>
         <span className={classes.text}>Ощущается как:</span>
