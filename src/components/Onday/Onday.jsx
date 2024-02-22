@@ -4,10 +4,11 @@ import Date from "../Date";
 import Temperature from "../Temperature";
 import Precepitation from "../Precepitation";
 
-import { getRoundTemp } from "../../utils";
+import { getRoundTemp, correctDate } from "../../utils";
 
 const Onday = (props) => {
   const { data } = props;
+  const date = correctDate(data.date);
   const day = getDataOfTime(14, data);
 
   function getDataOfTime(time, data) {
@@ -17,7 +18,7 @@ const Onday = (props) => {
 
   return (
     <div className={classes.onday}>
-      <Date classes={classes} day={1} month={data.date} />
+      <Date classes={classes} day={1} month={date} />
       <div className={classes.weather}>
         <Temperature classes={classes} temp={getRoundTemp(day.temp_c)} />
         <Precepitation classes={classes} image={day.condition} />

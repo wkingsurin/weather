@@ -22,11 +22,10 @@ export default function App() {
       const result = await json;
       setData(result);
       setIsLoading(false);
-      console.log(result);
     });
 
     document.addEventListener("click", (e) => {
-      if (isLoading) return;
+      if (isLoading || !select.isOpened) return;
       if (!e.target.closest("#dropdown")) {
         setSelect((prev) => ({
           ...prev,

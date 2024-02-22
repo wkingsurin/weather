@@ -19,7 +19,6 @@ const DropDown = (props) => {
     getData(URL(city), options).then((json) => {
       setData(json);
       setIsLoading(false);
-      console.log(json);
     });
   }
 

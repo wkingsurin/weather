@@ -24,3 +24,12 @@ export const options = {
     "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
   },
 };
+
+export const correctDate = (date) => {
+  const regexp = /(\d{4})-(\d{2})-(\d{2})/;
+  const result = date.toString().match(regexp);
+
+  const month = result[2];
+  const day = result[3];
+  return `${day}.${month}`;
+};
