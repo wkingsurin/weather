@@ -27,9 +27,19 @@ export const options = {
 
 export const correctDate = (date) => {
   const regexp = /(\d{4})-(\d{2})-(\d{2})/;
-  const result = date.toString().match(regexp);
+  const string = date.toString().match(regexp);
 
-  const month = result[2];
-  const day = result[3];
-  return `${day}.${month}`;
+  const year = string[1];
+  const month = string[2];
+  const day = string[3];
+
+  const result = `${day}.${month}`;
+  return { year: year, month: month, day: day, date: result };
+};
+
+export const getWeekday = (date) => {
+  const formatter = Intl.DateTimeFormat("ru", { weekday: "short" });
+  const weekday = formatter.format(date);
+  const result = weekday[0].toUpperCase() + weekday[1];
+  return result;
 };

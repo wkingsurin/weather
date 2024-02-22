@@ -1,15 +1,16 @@
 import classes from "./Onday.module.css";
 
-import Date from "../Date";
+import DateComp from "../DateComp";
 import Temperature from "../Temperature";
 import Precepitation from "../Precepitation";
 
-import { getRoundTemp, correctDate } from "../../utils";
+import { getRoundTemp, correctDate, getWeekday } from "../../utils";
 
 const Onday = (props) => {
   const { data } = props;
-  const date = correctDate(data.date);
-  const day = getDataOfTime(14, data);
+  const { year, month, day, date } = correctDate(data.date);
+  const onDay = getDataOfTime(14, data);
+  const weekday = getWeekday(new Date(year, month, day - 1));
 
   function getDataOfTime(time, data) {
     let day = data.hour[time];
@@ -18,16 +19,16 @@ const Onday = (props) => {
 
   return (
     <div className={classes.onday}>
-      <Date classes={classes} day={1} month={date} />
+      <DateComp classes={classes} day={weekday} month={date} />
       <div className={classes.weather}>
-        <Temperature classes={classes} temp={getRoundTemp(day.temp_c)} />
-        <Precepitation classes={classes} image={day.condition} />
+        <Temperature classes={classes} temp={getRoundTemp(onDay.temp_c)} />
+        <Precepitation classes={classes} image={onDay.condition} />
       </div>
       <div className={classes.info}>
         <span className={classes.text}>Ощущается как:</span>
         <Temperature
           classes={classes}
-          temp={getRoundTemp(day.feelslike_c)}
+          temp={getRoundTemp(onDay.feelslike_c)}
           isTempLike
         />
       </div>
